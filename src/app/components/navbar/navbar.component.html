@@ -1,0 +1,46 @@
+<nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-3">
+
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a routerLink="/timeLine" class="text-2xl font-bold text-blue-600">SocialApp</a>
+            </div>
+
+            <!-- Navigation Links (Hidden on Mobile) -->
+
+
+            <!-- Profile Icon & Mobile Menu Button -->
+            <div class="flex items-center space-x-16">
+                <!-- Profile Dropdown -->
+                <div class="relative flex justify-center items-center gap-6">
+                    <button routerLink="/profile" id="profile-btn" class="focus:outline-none">
+                        <img src="/favicon.png" class="w-10 h-10 rounded-full border" alt="profile" />
+                    </button>
+
+                    <div class="relative">
+                        <!-- Bell Icon -->
+                        <i class="text-3xl text-gray-700 fa-solid fa-bell hover:animate-[fa-shake_0.9s_infinite]"></i>
+
+                        <!-- Notification Count Badge -->
+                        <span class="absolute top-0 -right-1 w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-bold">
+                            8
+                        </span>
+                    </div>
+
+
+
+                </div>
+                <div (click)="logOut()" routerLink="" class="ms-8 flex items-center justify-center gap-2 cursor-pointer ">
+                    <h4 class="text-1xl font-bold">Log out</h4>
+                    <i class=" fa-solid fa-right-from-bracket"></i>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+
+</nav>
