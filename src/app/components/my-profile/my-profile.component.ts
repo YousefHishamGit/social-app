@@ -20,6 +20,7 @@ export class MyProfileComponent implements OnInit {
   myId:any;
   contant:any;
   saveImg:any;
+  count!:number;
 
   ngOnInit(): void {
     this.getMyPostes();
@@ -39,6 +40,7 @@ export class MyProfileComponent implements OnInit {
           next:(res)=>{
             
             this.myPost=res.posts;
+            this.count=res.paginationInfo.total;
             console.log(this.myPost);
             
           }
