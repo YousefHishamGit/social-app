@@ -18,7 +18,9 @@ export class TimeLineComponent implements OnInit {
   postList:Iposts[]=[];
   contant:any;
   saveImg:any;
+  loading!:boolean;
   ngOnInit(): void {
+    this.loading=false;
     this.Get_All_Posts();
     
   }
@@ -29,6 +31,7 @@ export class TimeLineComponent implements OnInit {
       next:(res)=>{
         
         this.postList=res.posts;
+        this.loading=true;
       }
     })
   }
