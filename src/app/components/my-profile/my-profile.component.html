@@ -54,12 +54,16 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                    <button (click)="addPost()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Post</button>
+                    <button data-modal-hide="default-modal" (click)="addPost()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Post</button>
                     <button data-modal-hide="default-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
 
     @if (count===0) {
     <div class="flex flex-col items-center justify-center text-center py-10">
@@ -72,13 +76,15 @@
     } @else { @if (myPost) { @for (post of myPost; track $index) {
     <!--One Post-->
     <div class="p-8 bg-slate-50 flex flex-col gap-4 rounded-md">
-        <div class="flex gap-3">
-            <img class="h-14 w-14 rounded-full" [src]="post.user.photo" alt="">
-            <div>
-                <h2 class="text-xl fw-bold ">{{post.user.name}}</h2>
-                <span class="text-sm text-gray-600">{{post.createdAt | date}} </span>
+        <div class="flex gap-3 justify-between">
+            <div class="flex gap-3">
+                <img class="h-14 w-14 rounded-full" [src]="post.user.photo" alt="">
+                <div>
+                    <h2 class="text-xl fw-bold ">{{post.user.name}}</h2>
+                    <span class="text-sm text-gray-600">{{post.createdAt | date}} </span>
+                </div>
             </div>
-
+            <div><i (click)="deletePost(post._id)" class="fa-solid fa-xmark text-gray-400 hover:text-red-600 hover:text-xl"></i></div>
         </div>
 
         <p>{{post.body}}</p>

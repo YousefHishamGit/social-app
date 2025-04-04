@@ -5,16 +5,21 @@ import { UsersService } from '../../core/services/User/users.service';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { CommentsComponent } from "../Comments/comments/comments.component";
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-profile',
   imports: [NavbarComponent, DatePipe, CommentsComponent,FormsModule],
   templateUrl: './my-profile.component.html',
-  styleUrl: './my-profile.component.css'
+  styleUrl: './my-profile.component.css',
+  standalone:true
 })
 export class MyProfileComponent implements OnInit {
   private readonly postsService =inject(PostsService);
   private readonly usersService =inject(UsersService);
+  private readonly router =inject(Router);
+  toastrService=inject(ToastrService);
   myPost:any;
   myToken=localStorage.getItem('token')
   myId:any;
@@ -41,7 +46,7 @@ export class MyProfileComponent implements OnInit {
             
             this.myPost=res.posts;
             this.count=res.paginationInfo.total;
-            console.log(this.myPost);
+            
             
           }
         })
@@ -65,9 +70,32 @@ export class MyProfileComponent implements OnInit {
 
     this.postsService.Create_Post(data).subscribe({
       next:(res)=>{
-        console.log(res);
+
+        this.getMyPostes();
+        this.AddSuccess();
         
       }
+
     })
+  }
+  deletePost(id:string):void{
+    this.postsService.Delete_Post(id).subscribe({
+      next:(res)=>{ 
+          
+          if(res.message=="success"){
+            
+            this.getMyPostes();
+            this.DeletedSuccess();
+          }
+          
+
+      }
+    })
+  }
+  DeletedSuccess() {
+    this.toastrService.success('Your post has been Deleted!');
+  }
+  AddSuccess() {
+    this.toastrService.success('Your post has been Created!');
   }
 }
