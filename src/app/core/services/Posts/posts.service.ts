@@ -17,7 +17,9 @@ export class PostsService {
   Get_All_Posts():Observable<any>{
     return this.http.get(`${baseUrl}/posts`)
   }
-  
+  Get_friends():Observable<any>{
+    return this.http.get(`${baseUrl}/posts?limit=10`)
+  }
 Get_My_Posts(myToken:any):Observable<any>{
     return this.http.get(`${baseUrl}/users/${myToken}/posts`)
   }

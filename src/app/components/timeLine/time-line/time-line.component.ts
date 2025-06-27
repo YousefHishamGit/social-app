@@ -6,10 +6,11 @@ import { CommentsService } from '../../../core/services/Comments/comments.servic
 import { CommentsComponent } from "../../Comments/comments/comments.component";
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { FriendsComponent } from "../../friends/friends.component";
 
 @Component({
   selector: 'app-time-line',
-  imports: [DatePipe, CommentsComponent, FormsModule, NavbarComponent],
+  imports: [DatePipe, CommentsComponent, FormsModule, NavbarComponent, FriendsComponent],
   templateUrl: './time-line.component.html',
   styleUrl: './time-line.component.css'
 })

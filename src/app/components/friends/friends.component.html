@@ -1,0 +1,26 @@
+<div class="w-full rounded-xl shadow-md  p-1 flex flex-col items-center space-y-3 bg-gray-50  ">
+    @for(friend of friendsList; track $index) {
+
+    <!-- Avatar with online status -->
+    <div class="relative">
+        <img [src]="friend.user.photo" alt="Friend's name" class="w-20 h-20 rounded-full object-cover border-2 ">
+        <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 "></span>
+    </div>
+    <!-- Friend Info -->
+    <div class="text-center space-y-1">
+        <h3 class="text-lg font-semibold text-gray-800">{{friend.user.name}}</h3>
+
+    </div>
+    <!-- Action Buttons -->
+    <div class="flex space-x-3 w-full pt-2 w-[80%] mb-5">
+        <button class="flex-1 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium transition">
+      Message
+    </button>
+        <button class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition">
+      Profile
+    </button>
+    </div>
+    <hr> }
+
+
+</div>
