@@ -17,20 +17,33 @@ export class SignInComponent {
     password:new FormControl(null ,[Validators.required])
     
   });
+  loading!:boolean
+  errMsg!:string
 
   sumbitForm():void{
+    this.loading=true;
     if(this.SignIn.valid){
       this.usersService.signIn(this.SignIn.value).subscribe({
         next:(res)=>{
+          
           console.log(res);
+          this.loading=false;
           if (res.message=="success") {
             localStorage.setItem('token',res.token);
             this.router.navigate(["/timeLine"])
             
           }
           
+        },
+        error:(err)=>{
+          console.log(err);
+          this.errMsg=err.error.error;
+          this.loading=false;
         }
+        
       })
+      
+      setInterval(this.errMsg="",1500);
     }
 
   }

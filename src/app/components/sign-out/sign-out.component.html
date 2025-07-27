@@ -84,14 +84,20 @@
             </div>
 
 
-            <button [disabled]="!SignOut.valid" (click)="submitReg()" type="submit" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200 disabled:bg-slate-300">
+            <button [disabled]="!SignOut.valid || loading" (click)="submitReg()" type="submit" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200 disabled:bg-slate-300">
                 Register
+                @if (loading) {
+                   <i class="fa-solid fa-spinner fa-spin"></i>
+                }
             </button>
         </form>
 
         <p class="text-center text-sm text-gray-600 mt-4">
             Already have an account?
-            <a routerLink="/sign-in" class="text-blue-500 hover:underline">Login</a>
+            <a routerLink="/sign-in" class="text-blue-500 hover:underline">Login
+
+
+            </a>
         </p>
     </div>
 </div>

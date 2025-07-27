@@ -22,15 +22,18 @@ export class SignOutComponent {
     
   });
 
+  loading!:boolean;
 
   submitReg():void{
+    this.loading=true;
     if(this.SignOut.valid){
     this.usersService.signUp(this.SignOut.value).subscribe({
       next:(res)=>{
         console.log(res);
+        this.loading=false;
         if (res.message=="success") {
           
-          this.router.navigate(["/sign-in"])
+          this.router.navigate(["/timeLine"])
           
         }
         

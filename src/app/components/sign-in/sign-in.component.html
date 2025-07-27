@@ -24,9 +24,16 @@
                 <a class="text-blue-500 hover:underline">Forgot password?</a>
             </div>
 
-            <button type="submit" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200">
+            <button [disabled]="SignIn.invalid || loading" type="submit" class="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg transition duration-200 disabled:bg-slate-100 ">
           Login
-        </button>
+          @if (loading) {
+                   <i class="fa-solid fa-spinner fa-spin"></i>
+                }
+        </button> @if (errMsg) {
+            <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="font-medium">Danger alert!</span> {{errMsg}}
+            </div>
+            }
         </form>
 
         <p class="text-center text-sm text-gray-600 mt-4">
